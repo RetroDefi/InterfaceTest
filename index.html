@@ -1,0 +1,2454 @@
+<html>
+<head>
+    <title>Retro Farms</title>
+    <meta name="description" content="Retro Farms is an advanced yield optimizer hosted on Binance Smart Chain (BSC) with Qbert (QBERT), a governance token native to the QBert finance ecosystem.">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=0.7">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/frontend/img/page-header/ms-icon-144x144.png">
+    <meta name="theme-color" content="#030609">
+    <link href="static/frontend/css/main.css?v=117" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900|Yellowtail" rel="stylesheet">
+</head>
+<body data-static-url="static/">
+    <main class="app preload">
+        <header>
+            <div class="top-notification hidden">
+                <span class="txt"></span>
+                <a class="btn-close"></a>
+            </div>
+            <div class="container">
+                <div class="logo">
+                    <a href="/">
+                        <img src="static/frontend/img/logo.png">
+                    </a>
+                </div>
+                <menu>
+                    <ul>
+                        <li class="selected">
+                            <a href="#">Earn</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Create LP<div class="mini-tag">NEW</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">Tutorials</a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">Docs</a>
+                        </li>
+                        <li>
+                            <a href="#">Buy BNB</a>
+                        </li>
+                        <li>
+                            <a href="#">Download Wallet</a>
+                        </li>
+                    </ul>
+                </menu>
+                <div class="wallet">
+                    <div class="qbert-price">
+                        <img src="static/frontend/img/symbols/qbertpxl.png">
+                        <div class="txt ml-10 price">$17.02</div>
+                    </div>
+                    <a class="btn small ml-20 primary buy-qbert hidden">Buy QBERT</a>
+                    <a class="btn small ml-10 btn-wallet" id="btn-wallet-unlock">Unlock Wallet</a>
+                    <div class="balance ml-10 hidden">
+                        <span class="qbert-balance">0.00 QBERT</span>
+                        <div class="wallet-info">
+                            <span class="wallet-address">...</span>
+                            <span class="icon ml-10"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#3C4E5A" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#3C4E5A" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#3C4E5A" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="mobile-menu">
+                <div class="wallet">
+                    <a class="btn small ml-10 btn-wallet" id="btn-wallet-unlock">Unlock Wallet</a>
+                    <div class="balance ml-10 hidden">
+                        <span class="qbert-balance">0 QBERT</span>
+                        <div class="wallet-info">
+                            <span class="wallet-address">...</span>
+                            <span class="icon ml-10"></span>
+                        </div>
+                    </div>
+                    <div class="break"></div>
+                    <div class="qbert-price">
+                        <img src="static/frontend/img/symbols/qbertpxl.png">
+                        <div class="txt ml-10 price">$17.02</div>
+                    </div>
+                    <a class="btn small ml-20 primary buy-qbert">Buy QBERT</a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li class="selected">
+                            <a href="#">Earn</a>
+                        </li>
+                        <li>
+                            <a href="#">Create LP</a>
+                        </li>
+                        <li>
+                            <a href="#">Tutorials</a>
+                        </li>
+                        <li>
+                            <a href="#">Docs</a>
+                        </li>
+                        <li>
+                            <a href="#">Buy BNB</a>
+                        </li>
+                        <li>
+                            <a href="#">Download Wallet</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="background no-anim">
+            <canvas id="canvas" width="460" height="320" style="z-index: 1;"></canvas>
+            <img class="layer bg" src="static/frontend/img/background/bg-all.jpg">
+        </div>
+        <div class="content">
+            <div class="title">
+                <div class="txt ttl">RetroDEFI <br> QBERT Optimized Farms</div>
+                <div class="txt tvl ml-auto">TVL $0</div>
+            </div>
+            <div class="options app-version index-0">
+                <div class="option active" data-value="#" data-index="0">Active</div>
+                <div class="option retired" data-value="#" data-index="1">Retired</div>
+            </div>
+            <div class="filters">
+                <div class="filter search">
+                    <div class="lbl">Search</div>
+                    <div class="input-container search">
+                        <input type="text" class="mt-10" placeholder="Search pools...">
+                    </div>
+                </div>
+                <div class="filter platform">
+                    <div class="lbl">Platform</div>
+                    <div class="dropdown-wrapper wrapped mt-10 platform" data-value="all" data-name="All">
+                        <div class="dropdown">
+                            <div class="itm" data-value="-1" data-name="All">All</div>
+                            <div class="itm" data-value="17" data-name="Pancake Swap V2">Pancake Swap V2</div>
+                            <div class="itm" data-value="2" data-name="QBert">QBert</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter type">
+                    <div class="lbl">Type</div>
+                    <div class="dropdown-wrapper mt-10 pool-type" data-value="all" data-name="All">
+                        <div class="dropdown">
+                            <div class="itm" data-value="-1" data-name="All">All</div>
+                            <div class="itm" data-value="1" data-name="Single Token">Single Token</div>
+                            <div class="itm" data-value="2" data-name="Stable Token">Stable Token</div>
+                            <div class="itm" data-value="3" data-name="LP Token">LP Token</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter asset">
+                    <div class="lbl">Asset</div>
+                    <div class="dropdown-wrapper wrapped mt-10 asset" data-value="all" data-name="All">
+                        <div class="dropdown">
+                            <div class="itm" data-value="-1" data-name="All">All</div>
+                            <div class="itm" data-value="5" data-name="BNB">BNB</div>
+                            <div class="itm" data-value="9" data-name="BUSD">BUSD</div>
+                            <div class="itm" data-value="10" data-name="USDT">USDT</div>
+                            <div class="itm" data-value="29" data-name="USDC">USDC</div>
+                            <div class="itm" data-value="30" data-name="ETH">ETH</div>
+                            <div class="itm" data-value="49" data-name="DAI">DAI</div>
+                            <div class="itm" data-value="3" data-name="QBERT">QBERT</div>
+                            <div class="itm" data-value="1003" data-name="QBERT-BNB LP">QBERT-BNB LP</div>
+                            <div class="itm" data-value="1017" data-name="QBERT-BUSD LP">QBERT-BUSD LP</div>
+                            <div class="itm" data-value="1018" data-name="QBERT-CAKE LP">QBERT-CAKE LP</div>
+                            <div class="itm" data-value="2" data-name="CAKE">CAKE</div>
+                            <div class="itm" data-value="1001" data-name="CAKE-WBNB LP">CAKE-WBNB LP</div>
+                            <div class="itm" data-value="1002" data-name="CAKE-BNB LP">CAKE-BNB LP</div>                      
+                        </div>
+                    </div>
+                </div>
+                <div class="filter sort">
+                    <div class="lbl">Sort by</div>
+                    <div class="dropdown-wrapper wrapped mt-10 sort" data-value="default" data-name="Default">
+                        <div class="dropdown">
+                            <div class="itm" data-value="default" data-name="Default">Default</div>
+                            <div class="itm" data-value="name" data-name="Name">Name</div>
+                            <div class="itm" data-value="balance" data-name="Balance">Balance</div>
+                            <div class="itm" data-value="deposited" data-name="Deposited">Deposited</div>
+                            <div class="itm" data-value="apy" data-name="Yearly">Yearly</div>
+                            <div class="itm" data-value="daily" data-name="Daily">Daily</div>
+                            <div class="itm" data-value="tvl" data-name="TVL">TVL</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter zero-balance">
+                    <div class="checkbox-container hide-zero-balance">
+                        <label for="hide-zero-balance">Show my vaults</label>
+                        <input type="checkbox" id="hide-zero-balance">
+                    </div>
+                </div>
+            </div>
+            <div class="stats-stripe">
+                <div class="btn show-hide"></div>
+                <div class="txt deposit-ttl">My total deposit:</div>
+                <div class="txt total-deposit loading">&zwnj;</div>
+                <div class="txt qbert-ttl">QBert pending:</div>
+                <div class="txt qbert-pending loading">
+                    <span class="amount"></span>
+                    <span class="value"></span>
+                </div>
+                <div class="btn harvest-all disabled">Harvest All</div>
+            </div>
+            <div class="pools">
+                <div class="pool-card highlighted" data-pid="1" data-pool-type="1" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, -1, 3]" data-pool-title="RCUBE" data-pool-subtitle="" data-currency-id="3" data-currency-name="RCube" data-currency-ticker="RCUBE" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="284.29231967" data-daily="0.7788830675890410958904109589" data-tvl="4746112.42832821" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols">
+                            <img src="static/frontend/img/symbols/RCUBE.png">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                RCUBE
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">50x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">284.29%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.78%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$4.75M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get RCUBE</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get RCUBE</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">284.29%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">284.29%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.78%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.78%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">50x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">RCUBE TVL:&nbsp;</span>
+                                        <span class="val">$4,746,112</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="2" data-pool-type="1" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, -1, 3]" data-pool-title="QBERT" data-pool-subtitle="" data-currency-id="3" data-currency-name="Qbert" data-currency-ticker="QBERT" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="284.29231967" data-daily="0.7788830675890410958904109589" data-tvl="4746112.42832821" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols">
+                            <img src="static/frontend/img/symbols/qbertpxl.png">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                QBERT
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">50x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">284.29%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.78%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$4.75M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get QBERT</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get QBERT</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">284.29%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">284.29%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.78%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.78%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">50x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert TVL:&nbsp;</span>
+                                        <span class="val">$4,746,112</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="3" data-pool-type="1" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, -1, 3]" data-pool-title="QBERT" data-pool-subtitle="" data-currency-id="3" data-currency-name="Qbert" data-currency-ticker="QBERT" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="284.29231967" data-daily="0.7788830675890410958904109589" data-tvl="4746112.42832821" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols">
+                            <img src="static/frontend/img/symbols/bnb.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                BNB
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">284.29%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.78%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$4.75M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get BNB</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BNB</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">284.29%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">284.29%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.78%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.78%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">BNB TVL:&nbsp;</span>
+                                        <span class="val">$4,746,112</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="4" data-pool-type="1" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, -1, 3]" data-pool-title="QBERT" data-pool-subtitle="" data-currency-id="3" data-currency-name="Qbert" data-currency-ticker="QBERT" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="284.29231967" data-daily="0.7788830675890410958904109589" data-tvl="4746112.42832821" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols">
+                            <img src="static/frontend/img/symbols/busd.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                BUSD
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">284.29%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.78%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$4.75M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get BUSD</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BUSD</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">284.29%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">284.29%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.78%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.78%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">BUSD TVL:&nbsp;</span>
+                                        <span class="val">$4,746,112</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="5" data-pool-type="1" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, -1, 3]" data-pool-title="QBERT" data-pool-subtitle="" data-currency-id="3" data-currency-name="Qbert" data-currency-ticker="QBERT" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="284.29231967" data-daily="0.7788830675890410958904109589" data-tvl="4746112.42832821" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols">
+                            <img src="static/frontend/img/symbols/eth.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                ETH
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">284.29%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.78%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$4.75M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get ETH</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get ETH</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">284.29%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">284.29%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.78%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.78%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">ETH TVL:&nbsp;</span>
+                                        <span class="val">$4,746,112</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="6" data-pool-type="1" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, -1, 3]" data-pool-title="QBERT" data-pool-subtitle="" data-currency-id="3" data-currency-name="Qbert" data-currency-ticker="QBERT" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="284.29231967" data-daily="0.7788830675890410958904109589" data-tvl="4746112.42832821" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols">
+                            <img src="static/frontend/img/symbols/bunny.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                BUNNY
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">284.29%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.78%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$4.75M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get BUNNY</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BUNNY</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">284.29%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">284.29%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.78%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.78%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">BUNNY TVL:&nbsp;</span>
+                                        <span class="val">$4,746,112</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card new radioactive" data-pid="202" data-pool-type="1" data-platform="17" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[2, -1, 2]" data-pool-title="Radioactive CAKE" data-pool-subtitle="" data-currency-id="2" data-currency-name="PancakeSwap Token" data-currency-ticker="CAKE" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="false" data-token0-ticker="cake" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="179.54223762" data-daily="0.3201958720547945205479452055" data-tvl="2426605.61262074" data-gas-limit-tx="1">
+                    <div class="tag-container">
+                        <div class="mini-tag new-tag">NEW</div>
+                    </div>
+                    <div class="info">
+                        <div class="symbols">
+                            <!--<img class="radioactive-icn" src="static/frontend/img/radioactive.svg">-->
+                            <img src="static/frontend/img/symbols/cake.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                Compound CAKE
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">2x</div>
+                                <div class="provider ml-10">Pancake Swap V2</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">179.54%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.32%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$2.43M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get CAKE</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get CAKE</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm pond-apy">
+                                        <span class="ttl">Farm APY:&nbsp;</span>
+                                        <span class="val">157.30%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">22.24%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">179.54%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Farm Daily:&nbsp;</span>
+                                        <span class="val">0.26%</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.06%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.32%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">2x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert TVL:&nbsp;</span>
+                                        <span class="val">$2,426,606</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Farm TVL:&nbsp;</span>
+                                        <span class="val highlight">$2,080,344,500</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="101" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[5, 3, 1097]" data-pool-title="QBERT / BNB LP" data-pool-subtitle="" data-currency-id="1097" data-currency-name="QBERT-BNB LP" data-currency-ticker="QBERT-BNB LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="bnb" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="true" data-token1-contract="0xc5A49b4CBe004b6FD55B30Ba1dE6AC360FF9765d" data-token1-ticker="qbert" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="258.82935438" data-daily="0.7091215188493150684931506849" data-tvl="1042604.54915117" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/RCUBE.png">
+                            <img src="static/frontend/img/symbols/bnb.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                RCUBE / BNB LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">20x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">258.83%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.71%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$1.04M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get RCUBE-BNB LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BNB / RCUBE</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">258.83%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">258.83%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.71%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.71%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">20x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">RCUBE/BNB TVL:&nbsp;</span>
+                                        <span class="val">$1,042,605</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="102" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[5, 3, 1097]" data-pool-title="QBERT / BNB LP" data-pool-subtitle="" data-currency-id="1097" data-currency-name="QBERT-BNB LP" data-currency-ticker="QBERT-BNB LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="bnb" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="true" data-token1-contract="0xc5A49b4CBe004b6FD55B30Ba1dE6AC360FF9765d" data-token1-ticker="qbert" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="258.82935438" data-daily="0.7091215188493150684931506849" data-tvl="1042604.54915117" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/RCUBE.png">
+                            <img src="static/frontend/img/symbols/qbertpxl.png">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                RCUBE / QBERT LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">20x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">258.83%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.71%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$1.04M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get RCUBE-QBERT LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BNB / QBERT</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">258.83%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">258.83%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.71%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.71%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">20x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">RCUBE/QBERT TVL:&nbsp;</span>
+                                        <span class="val">$1,042,605</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="103" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[5, 3, 1097]" data-pool-title="QBERT / BNB LP" data-pool-subtitle="" data-currency-id="1097" data-currency-name="QBERT-BNB LP" data-currency-ticker="QBERT-BNB LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="bnb" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="true" data-token1-contract="0xc5A49b4CBe004b6FD55B30Ba1dE6AC360FF9765d" data-token1-ticker="qbert" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="258.82935438" data-daily="0.7091215188493150684931506849" data-tvl="1042604.54915117" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/bnb.svg">
+                            <img src="static/frontend/img/symbols/qbertpxl.png">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                QBERT / BNB LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">258.83%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.71%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$1.04M
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get QBERT-BNB LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BNB / QBERT</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">258.83%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">258.83%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.71%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.71%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert TVL:&nbsp;</span>
+                                        <span class="val">$1,042,605</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="104" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, 9, 1098]" data-pool-title="QBERT / BUSD LP" data-pool-subtitle="" data-currency-id="1098" data-currency-name="QBERT-BUSD LP" data-currency-ticker="QBERT-BUSD LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-token1-contract="0xe9e7cea3dedca5984780bafc599bd69add087d56" data-token1-ticker="busd" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="339.03732475" data-daily="0.9288693828767123287671232877" data-tvl="795949.71596354" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/busd.svg">
+                            <img src="static/frontend/img/symbols/qbertpxl.png">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                QBERT / BUSD LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">339.04%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.93%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$795,950
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get QBERT-BUSD LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get QBERT / BUSD</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">339.04%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">339.04%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.93%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.93%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert TVL:&nbsp;</span>
+                                        <span class="val">$795,950</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="104" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, 9, 1098]" data-pool-title="QBERT / BUSD LP" data-pool-subtitle="" data-currency-id="1098" data-currency-name="QBERT-BUSD LP" data-currency-ticker="QBERT-BUSD LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-token1-contract="0xe9e7cea3dedca5984780bafc599bd69add087d56" data-token1-ticker="busd" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="339.03732475" data-daily="0.9288693828767123287671232877" data-tvl="795949.71596354" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/busd.svg">
+                            <img src="static/frontend/img/symbols/bnb.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                BNB / BUSD LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">339.04%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.93%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$795,950
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get BNB-BUSD LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BNB / BUSD</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">339.04%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">339.04%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.93%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.93%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">BNB / BUSD TVL:&nbsp;</span>
+                                        <span class="val">$795,950</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="104" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[3, 9, 1098]" data-pool-title="QBERT / BUSD LP" data-pool-subtitle="" data-currency-id="1098" data-currency-name="QBERT-BUSD LP" data-currency-ticker="QBERT-BUSD LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="qbert" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-token1-contract="0xe9e7cea3dedca5984780bafc599bd69add087d56" data-token1-ticker="busd" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="339.03732475" data-daily="0.9288693828767123287671232877" data-tvl="795949.71596354" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/DUSA.png">
+                            <img src="static/frontend/img/symbols/bnb.svg">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                BNB / DUSA LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">10x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">339.04%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.93%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$795,950
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get BNB-DUSA LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get BNB / DUSA</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">339.04%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">339.04%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.93%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.93%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">10x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">BNB / DUSA TVL:&nbsp;</span>
+                                        <span class="val">$795,950</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pool-card highlighted" data-pid="105" data-pool-type="3" data-platform="2" data-platform-swap-single-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=" data-platform-swap-lp-url="https://exchange.pancakeswap.finance/#/add/" data-platform-swap-lp-with-gas-url="https://exchange.pancakeswap.finance/#/add/BNB/" data-platform-zap-enabled="true" data-currencies="[2, 3, 1099]" data-pool-title="QBERT / CAKE LP" data-pool-subtitle="" data-currency-id="1099" data-currency-name="QBERT-CAKE LP" data-currency-ticker="QBERT-CAKE LP" data-currency-contract="0x0000000000000000000000000000000000000000" data-strategy-contract-address="0x0000000000000000000000000000000000000000" data-custom-swap-url="false" data-is-lp="true" data-token0-ticker="cake" data-token0-contract="0x0000000000000000000000000000000000000000" data-token0-is-gas="false" data-token1-contract="0xc5A49b4CBe004b6FD55B30Ba1dE6AC360FF9765d" data-token1-ticker="qbert" data-token1-is-gas="false" data-updated="false" data-deposited="0" data-pending="0" data-balance="0" data-apy="296.72730077" data-daily="0.8129515089589041095890410959" data-tvl="454721.66131938" data-gas-limit-tx="1">
+                    <div class="tag-container"></div>
+                    <div class="info">
+                        <div class="symbols single">
+                            <img src="static/frontend/img/symbols/cake.svg">
+                            <img src="static/frontend/img/symbols/qbertpxl.png">
+                        </div>
+                        <div class="pool">
+                            <div class="ttl">
+                                QBERT / CAKE LP
+<div class="sub-ttl"></div>
+                            </div>
+                            <div class="bottom">
+                                <div class="tag multiplier">5x</div>
+                                <div class="provider ml-10">QBert</div>
+                            </div>
+                        </div>
+                        <div class="key-value balance">
+                            <div class="val">0</div>
+                            <div class="key">Balance</div>
+                        </div>
+                        <div class="key-value deposited">
+                            <div class="val">0</div>
+                            <div class="key">Deposited</div>
+                        </div>
+                        <div class="key-value apy shorter">
+                            <div class="val primary">296.73%
+</div>
+                            <div class="key">Yearly</div>
+                        </div>
+                        <div class="key-value daily shorter">
+                            <div class="val">0.81%
+</div>
+                            <div class="key">Daily</div>
+                        </div>
+                        <div class="key-value tvl shorter">
+                            <div class="val">$454,722
+</div>
+                            <div class="key">TVL</div>
+                        </div>
+                        <div class="btn outlined loading ml-auto get">Get QBERT-CAKE LP</div>
+                        <div class="btn expand ml-10"></div>
+                    </div>
+                    <div class="details">
+                        <div class="line"></div>
+                        <div class="transactions">
+                            <div class="transaction deposit no-bg">
+                                <div class="amount">
+                                    <span class="ttl">Wallet:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        -- <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="swap">
+                                    <a>Get CAKE / QBERT</a>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 deposit" data-currency-contract="0x0000000000000000000000000000000000000000">Deposit to Vault
+</div>
+                            </div>
+                            <div class="transaction withdraw">
+                                <div class="amount">
+                                    <span class="ttl">Vault:</span>
+                                    <span class="val" data-display-decimals="6">
+                                        0.00 <span class="estimate"></span>
+                                    </span>
+                                </div>
+                                <div class="input-container number with-max">
+                                    <input type="text" data-humanize="false" data-decimal-places="18" value="0">
+                                    <div class="max">MAX</div>
+                                </div>
+                                <div class="btn secondary mt-20 withdraw">Withdraw to Wallet
+</div>
+                            </div>
+                            <div class="transaction harvest">
+                                <div class="ttl">Pending :</div>
+                                <div class="val">
+                                    <span class="amount">0.0</span>
+                                    <span class="value">($0.0)</span>
+                                </div>
+                                <div class="btn primary harvest">Harvest</div>
+                            </div>
+                        </div>
+                        <div class="farm-info">
+                            <div class="information">
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Annual</span>
+                                    </div>
+                                    <div class="itm qbert-apy">
+                                        <span class="ttl">QBert APR:&nbsp;</span>
+                                        <span class="val">296.73%</span>
+                                        <img class="tooltip" src="static/frontend/img/info-primary.svg">
+                                    </div>
+                                    <div class="itm total-apy">
+                                        <span class="ttl">Total Returns:&nbsp;</span>
+                                        <span class="val highlight">296.73%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Daily</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert Daily:&nbsp;</span>
+                                        <span class="val">0.81%</span>
+                                    </div>
+                                    <div class="itm total-daily-apy">
+                                        <span class="ttl">Total Daily:&nbsp;</span>
+                                        <span class="val highlight">0.81%</span>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="itm head">
+                                        <span class="ttl">Farm</span>
+                                    </div>
+                                    <div class="itm pond-daily-apy">
+                                        <span class="ttl">Weight:&nbsp;</span>
+                                        <span class="val">5x</span>
+                                    </div>
+                                    <div class="itm qbert-daily-apy">
+                                        <span class="ttl">QBert TVL:&nbsp;</span>
+                                        <span class="val">$454,722</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<a class="certik-container large" href="https://certik.org/projects/qbertfinance" target="_blank">
+            <img class="logo" src="static/frontend/img/certik-full.svg">
+            <img class="check" src="static/frontend/img/check-primary.svg">
+            <span class="txt">Skynet</span>
+            <div class="pulsing-circle"></div>
+        </a>-->
+        <div class="popup-container">
+            <div id="popup-buy-lp-token" class="popup" data-static-symbols="static/frontend/img/symbols" data-url-buy-bnb="/buy-bnb/">
+                <div class="header">
+                    <div class="ttl">-</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <div class="tokens">
+                        <div class="itm token0">
+                            <img src="static/frontend/img/binance-outlined.svg">
+                            <div class="balance">0</div>
+                            <a href="#" target="_blank" class="btn secondary">Buy</a>
+                        </div>
+                        <div class="itm token1">
+                            <img src="static/frontend/img/binance-outlined.svg">
+                            <div class="balance">0</div>
+                            <a href="#" target="_blank" class="btn secondary">Buy</a>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="txt">
+                            You need 50% - 50% of both tokens to deposit in LP.
+<a href="/tutorials/#how-to-create-lp-token-and-deposit-to-vault">How to create LP?</a>
+                        </div>
+                        <a href="#" target="_blank" class="btn secondary add-lp">Add to LP</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup-buy-single-token" class="popup" data-static-symbols="static/frontend/img/symbols">
+                <div class="header">
+                    <div class="ttl">-</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <img src="static/frontend/img/symbols/qbertpxl.png">
+                    <div class="balance">0</div>
+                    <a href="#" target="_blank" class="btn secondary buy">Buy</a>
+                </div>
+            </div>
+            <div id="popup-vault-details" class="popup">
+                <div class="header">
+                    <div class="ttl">Vault Details</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <div class="key-value mt-20">
+                        <div class="key">Pool</div>
+                        <div class="value name">-</div>
+                    </div>
+                    <div class="key-value mt-10">
+                        <div class="key">Pool ID</div>
+                        <div class="value pid">-</div>
+                    </div>
+                    <div class="key-value mt-10">
+                        <div class="key">Strategy Contract</div>
+                        <a class="value strategy">-</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popup-buy-qbert" class="popup">
+                <div class="header">
+                    <div class="ttl">-</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <img src="static/frontend/img/symbols/qbertpxl.png">
+                    <div class="balance">0</div>
+                    <div class="key-value">
+                        <div class="key">Balance</div>
+                        <div class="value qbert-balance">0 QBERT</div>
+                    </div>
+                    <div class="key-value mt-10">
+                        <div class="key">Balance in Vault</div>
+                        <div class="value qbert-balance-vault">0 QBERT</div>
+                    </div>
+                    <div class="seperator"></div>
+                    <div class="key-value">
+                        <div class="key">Price</div>
+                        <div class="value qbert-price">$17.02</div>
+                    </div>
+                    <div class="key-value mt-10">
+                        <div class="key">Current Supply</div>
+                        <div class="value qbert-supply">-</div>
+                    </div>
+                    <div class="key-value mt-10">
+                        <div class="key">Market Cap</div>
+                        <div class="value market-cap">-</div>
+                    </div>
+                    <div class="key-value mt-10">
+                        <div class="key">Contract Address</div>
+                        <div class="value qbert-contract">
+                            <span></span>
+                            <img class="copy" src="static/frontend/img/copy.svg">
+                        </div>
+                    </div>
+                    <a class="chart" target="_blank" data-url="https://dex.guru/token/">View chart</a>
+                    <a class="btn primary buy" target="_blank" data-url="https://exchange.pancakeswap.finance/#/swap?outputCurrency=">Buy QBERT</a>
+                </div>
+            </div>
+            <div id="popup-account" class="popup">
+                <div class="header">
+                    <div class="ttl">Account</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <div class="address">
+                        <div class="icon"></div>
+                        <div class="txt">-</div>
+                        <div class="copy">Copy Address</div>
+                    </div>
+                    <div class="seperator"></div>
+                    <div class="ttl public-provider">RPC Provider</div>
+                    <div class="dropdown-wrapper wrapped public-provider" data-value="" data-name="">
+                        <div class="dropdown"></div>
+                    </div>
+                    <a class="btn secondary disconnect">Disconnect Wallet</a>
+                </div>
+            </div>
+            <div id="popup-harvest-all" class="popup" data-url-symbols="static/frontend/img/symbols" data-is-harvesting="false">
+                <div class="header">
+                    <div class="ttl">Harvest All</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <div class="pending-container">
+                        <div class="head">
+                            <div class="ttl">Pending:</div>
+                            <div class="vaults">0/0 vaults</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="amount">
+                                <span class="qbert">0 QBERT</span>
+                                <span class="value">($0.0)</span>
+                            </div>
+                            <div class="reset">Reset</div>
+                        </div>
+                    </div>
+                    <div class="seperator"></div>
+                    <div class="vault-list">
+                        <div class="itm template">
+                            <div class="icons">
+                                <img class="icon icon-1" src="static/frontend/img/symbols/qbertpxl.png">
+                                <img class="icon icon-2" src="static/frontend/img/symbols/qbertpxl.png">
+                            </div>
+                            <div class="content">
+                                <div class="ttl">QBERT</div>
+                                <div class="pending">0.0 QBERT</div>
+                            </div>
+                            <div class="actions">
+                                <div class="spinner"></div>
+                                <img class="btn cancel" src="static/frontend/img/close-gray-2.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn primary harvest-all">Harvest All</a>
+                </div>
+            </div>
+            <div id="popup-create-lp" class="popup" data-extra-script="static/frontend/js/components/component-create-lp.js" }>
+                <div class="header">
+                    <div class="ttl">Get LP</div>
+                    <img class="btn close" src="static/frontend/img/popup-close.svg">
+                </div>
+                <div class="content">
+                    <div class="create-lp-content">
+                        <div class="dropdown-wrapper currency wrapped base-currency" data-symbols-url="static/frontend/img/symbols/" data-symbols-custom-url="static/frontend/img/symbols/custom/">
+                            <div class="selected">
+                                <div class="icons">
+                                    <img src="static/frontend/img/symbols/qbertpxl.png">
+                                    <img src="static/frontend/img/symbols/qbertpxl.png">
+                                </div>
+                                <div class="ttl">-</div>
+                            </div>
+                            <div class="dropdown">
+                                <div class="itm template">
+                                    <div class="icons">
+                                        <img src="static/frontend/img/symbols/qbertpxl.png">
+                                        <img src="static/frontend/img/symbols/qbertpxl.png">
+                                    </div>
+                                    <div class="txt">
+                                        <div class="name"></div>
+                                        <div class="platform"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container number with-max large base-amount">
+                            <input type="text" data-decimal-places="18" value="0">
+                            <div class="max">MAX</div>
+                        </div>
+                        <div class="balance-txt base">Balance: -</div>
+                        <img class="arrow" src="static/frontend/img/arrow-down-secondary.svg">
+                        <div class="dropdown-wrapper currency wrapped counter-currency" data-symbols-url="static/frontend/img/symbols/" data-symbols-custom-url="static/frontend/img/symbols/custom/">
+                            <div class="selected">
+                                <div class="icons">
+                                    <img src="static/frontend/img/symbols/qbertpxl.png">
+                                    <img src="static/frontend/img/symbols/qbertpxl.png">
+                                </div>
+                                <div class="ttl">-</div>
+                            </div>
+                            <div class="dropdown">
+                                <div class="itm template">
+                                    <div class="icons">
+                                        <img src="static/frontend/img/symbols/qbertpxl.png">
+                                        <img src="static/frontend/img/symbols/qbertpxl.png">
+                                    </div>
+                                    <div class="txt">
+                                        <div class="name"></div>
+                                        <div class="platform"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="balance-txt counter">Balance: -</div>
+                        <div class="receive-container">
+                            <div class="itm receive">
+                                <div class="ttl">You receive</div>
+                                <div class="val">≈ 0-</div>
+                            </div>
+                            <div class="seperator"></div>
+                            <div class="itm slippage">
+                                <div class="ttl">Slippage tolerance</div>
+                                <div class="val">5.00%</div>
+                            </div>
+                            <div class="itm min-receive mt-10">
+                                <div class="ttl">Min. received</div>
+                                <div class="val">0</div>
+                            </div>
+                        </div>
+                        <div class="btn primary create">Create LP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="content">
+                <div class="copyright">© 2021 Retro DeFi. All rights reserved.
+</div>
+                <div class="social">
+                    <a href="https://github.com/RetroDefi" target="_blank" aria-label="github">
+                        <img src="static/frontend/img/social/github.svg">
+                    </a>
+                    <a href="https://twitter.com/retrodefi" target="_blank" aria-label="twitter">
+                        <img src="static/frontend/img/social/twitter.svg">
+                    </a>
+                    <a href="https://t.me/retrodefibsc" target="_blank" aria-label="telegram">
+                        <img src="static/frontend/img/social/telegram.svg">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/frontend/js/frontend-common.js?v=117"></script>
+    <script defer type="module">
+        import {createIcon} from '../static/frontend/lib/blockies.js';
+        window.createIcon = createIcon;
+    </script>
+    <script defer type="module">
+        import {CountUp} from '../static/frontend/lib/countUp.js';
+        window.countup = CountUp;
+    </script>
+    <script>let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        
+        canvas.width = (document.body.clientWidth);
+        canvas.height = (document.body.clientHeight / 3);
+        
+        let centerX = canvas.width / 2;
+        let centerY = canvas.height / 2;
+        
+        let lineY = 0;
+        let lines = [];
+        let maxLineWidth = 1;
+        let minLineWidth = 1;
+        let spacing = 70;
+        let verticalLines = Math.round(canvas.width / spacing / 2);
+        let speed = 0.4;
+        let accel = 0.0105;
+        let linesCount = 10;
+        let spacingY = Math.floor(canvas.height / linesCount) * 0.7;
+        
+        for (let i = 0; i < linesCount; i++) {
+          lines.push({
+            y: i * -spacingY
+          });
+        }
+        
+        function update(dt) {
+          let minY = lines[linesCount-1].y;
+          
+          for (let i = 0; i < lines.length; i++) {
+            lines[i].y += speed + Math.max(0, lines[i].y * accel);
+            
+            if (lines[i].y < minY) {
+              minY = lines[i].y;
+            }
+            
+            if (lines[i].y > canvas.height) {
+              lines[i].y = minY - spacingY;
+              minY = lines[i].y
+            }
+          }
+        }
+        
+        function draw(dt) {
+          requestAnimationFrame(draw);
+          update(dt);
+          
+          ctx.fillStyle = "#24241f";
+          ctx.strokeStyle = "#52DDD5";
+          
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          
+          ctx.shadowColor = '#52DDD5';
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+          ctx.shadowBlur = 20;
+          
+          ctx.lineWidth = 3.0;  
+          
+          // middle line
+          ctx.beginPath();
+          ctx.moveTo(centerX, 0);
+          ctx.lineTo(centerX, canvas.height);
+          ctx.stroke();
+          
+          for (let i = 1; i <= verticalLines; i++) {    
+            ctx.beginPath();
+            ctx.moveTo(centerX - (i * spacing), -1);
+            ctx.bezierCurveTo(
+              centerX - (i * spacing) * 1.5, 10,
+              centerX - (i * spacing) * 2.5, canvas.height,
+              centerX - (i * spacing) * 2.5, canvas.height,
+            );
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(centerX + (i * spacing), -1);
+            ctx.bezierCurveTo(
+              centerX + (i * spacing) * 1.5, 10,
+              centerX + (i * spacing) * 2.5, canvas.height,
+              centerX + (i * spacing) * 2.5, canvas.height,
+            );
+            ctx.stroke();
+          }
+          
+          for (let i = lines.length - 1; i >= 0; i--) {
+            if (lines[i].y < 0 || lines[i].y > canvas.height) {
+              continue;
+            }
+            
+            ctx.beginPath();
+            ctx.moveTo(0, lines[i].y);
+            ctx.lineWidth = minLineWidth + (lines[i].y * (maxLineWidth - minLineWidth) / canvas.height)
+            ctx.lineTo(canvas.width, lines[i].y);
+            //ctx.bezierCurveTo(
+              //centerX - centerX / 2, lines[i].y + 15, 
+              //centerX + centerX / 2, lines[i].y + 15, 
+              //canvas.width, lines[i].y);
+            ctx.stroke();
+          }
+        }
+        
+        draw();
+        </script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3@1.3.5/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.3/dist/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.4.1/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="application/javascript"></script>
+    <script defer src="static/frontend/js/crypto-utils.js?v=117"></script>
+    <script defer src="static/frontend/js/wallet.js?v=117"></script>
+    <script defer src="static/frontend/js/frontend-header.js?v=117"></script>
+    <script defer src="static/frontend/js/frontend-app.js?v=117"></script>
+</body>
+</html>
